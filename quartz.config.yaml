@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: null
   locale: ko-KR
-  baseUrl: markkang05.github.io/blog
+  baseUrl: markkang05.github.io
   ignorePatterns:
     - private
     - templates
