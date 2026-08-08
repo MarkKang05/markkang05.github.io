@@ -101,6 +101,21 @@ function setupTagExplorer() {
   const list = content.querySelector("ul.explorer-ul")
   const buttons = [...tabs.querySelectorAll(".explorer-tab")]
 
+  // Explorer 의 OverflowList 는 IntersectionObserver 로 .overflow-end 가 스크롤
+  // 컨테이너 안에 보이는지 감시해서, 안 보이면 ul 에 .gradient-active (하단 페이드
+  // 마스크) 를 건다. 태그 탭에서 ul 을 display:none 으로 숨기면 박스가 사라져
+  // "안 보임" 으로 판정되어 마스크가 걸리고, 다시 표시해도 옵저버 입장에서는
+  // 교차 상태가 그대로라 콜백이 안 돌아 마스크가 남는다. 직접 동기화해준다.
+  function syncOverflowGradient() {
+    if (!list) return
+    const end = list.querySelector(".overflow-end")
+    if (!end) return
+    const endRect = end.getBoundingClientRect()
+    const rootRect = content.getBoundingClientRect()
+    const visible = endRect.top < rootRect.bottom && endRect.bottom > rootRect.top
+    list.classList.toggle("gradient-active", !visible)
+  }
+
   function apply(view, persist) {
     for (const button of buttons) {
       const isActive = button.dataset.view === view
@@ -111,6 +126,7 @@ function setupTagExplorer() {
     // 반드시 "block" — 빈 문자열로 되돌리면 스타일시트의 .tag-explorer{display:none}
     // 이 다시 이겨서 탭만 있고 내용이 안 보인다.
     panel.style.display = view === "tags" ? "block" : "none"
+    if (view !== "tags") syncOverflowGradient()
     if (persist) {
       try {
         localStorage.setItem(VIEW_KEY, view)
