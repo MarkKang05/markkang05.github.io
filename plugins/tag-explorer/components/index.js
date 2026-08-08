@@ -108,7 +108,9 @@ function setupTagExplorer() {
       button.setAttribute("aria-selected", isActive ? "true" : "false")
     }
     if (list) list.style.display = view === "tags" ? "none" : ""
-    panel.style.display = view === "tags" ? "" : "none"
+    // 반드시 "block" — 빈 문자열로 되돌리면 스타일시트의 .tag-explorer{display:none}
+    // 이 다시 이겨서 탭만 있고 내용이 안 보인다.
+    panel.style.display = view === "tags" ? "block" : "none"
     if (persist) {
       try {
         localStorage.setItem(VIEW_KEY, view)

@@ -248,9 +248,9 @@ plugins:
     enabled: true
     options:
       includeAll: false
+      # tags 는 제외 — tag-list 플러그인이 가로 pill 로 그린다 (세로 표 중복 방지)
       includedProperties:
         - description
-        - tags
         - aliases
       excludedProperties: []
       hidePropertiesView: false
