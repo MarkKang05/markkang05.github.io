@@ -29,6 +29,3 @@ def hello():
 |---|---|
 | 작성 | Publish/ |
 | 발행 | quartz/content |
-
-## 관련
--
