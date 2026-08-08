@@ -1,5 +1,5 @@
 ---
-title: 발행 테스트
+title: 발행 테스트 1
 created: 2026-08-08
 tags:
   - 테스트
@@ -22,7 +22,7 @@ publish: true
 
 ```python
 def hello():
-    return "발행 성공"22
+    return "발행 성공"
 ```
 
 > 인용문도 확인한다.
