@@ -202,6 +202,7 @@ plugins:
       position: beforeBody
       priority: 5
       condition: not-index
+  # 번들 comments 플러그인은 giscus 만 지원 — Disqus 는 아래 로컬 플러그인 사용
   - source: "@quartz-community/comments"
     enabled: false
     options:
@@ -210,6 +211,17 @@ plugins:
     layout:
       position: afterBody
       priority: 10
+  - source: "./plugins/disqus-comments"
+    enabled: true
+    options:
+      # Disqus 관리자 페이지의 Shortname (https://<shortname>.disqus.com).
+      # 비워두면 컴포넌트가 아무것도 렌더하지 않는다.
+      shortname: ""
+      title: Comments
+    layout:
+      position: afterBody
+      priority: 20
+      condition: not-index
   - source: "@quartz-community/footer"
     enabled: true
     options:
@@ -295,11 +307,13 @@ layout:
     folder:
       exclude:
         - reader-mode
+        - disqus-comments
       positions:
         right: []
     tag:
       exclude:
         - reader-mode
+        - disqus-comments
       positions:
         right: []
     canvas: {}

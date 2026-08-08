@@ -1,0 +1,33 @@
+{
+  "name": "disqus-comments",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Disqus comment threads, SPA-aware",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./components": "./components/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./index.js",
+  "quartz": {
+    "name": "disqus-comments",
+    "displayName": "Disqus Comments",
+    "category": "component",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "dependencies": [],
+    "defaultEnabled": false,
+    "defaultOptions": {
+      "shortname": "",
+      "title": "Comments"
+    },
+    "components": {
+      "DisqusComments": {
+        "displayName": "Disqus Comments",
+        "defaultPosition": "afterBody",
+        "defaultPriority": 20
+      }
+    }
+  }
+}
