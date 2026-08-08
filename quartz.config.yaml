@@ -216,7 +216,7 @@ plugins:
     options:
       # Disqus 관리자 페이지의 Shortname (https://<shortname>.disqus.com).
       # 비워두면 컴포넌트가 아무것도 렌더하지 않는다.
-      shortname: ""
+      shortname: quartz-3
       title: Comments
     layout:
       position: afterBody
