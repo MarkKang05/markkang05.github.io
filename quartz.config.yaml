@@ -5,7 +5,8 @@ configuration:
   enableSPA: true
   enablePopovers: true
   analytics:
-    provider: null
+    provider: google
+    tagId: G-56CDXS76HM
   locale: en-US
   baseUrl: markkang05.github.io
   ignorePatterns:
