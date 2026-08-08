@@ -1,3 +1,48 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+//
+// NOTE: custom.scss 는 컴포넌트 CSS 보다 먼저 로드된다.
+// 플러그인이 심는 규칙(tag-list, recent-notes)을 덮어쓰려면 `body` 접두사로
+// specificity 를 한 단계 올려야 한다.
+
+// 태그 pill — 기본(tag-list 플러그인 제공)보다 한 단계 작게
+body a.internal.tag-link {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  padding: 0.1rem 0.4rem;
+  margin: 0;
+  border-radius: 6px;
+  opacity: 0.85;
+  transition:
+    opacity 0.15s ease,
+    background-color 0.15s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+body ul.tags {
+  gap: 0.3rem;
+  margin: 0.5rem 0;
+}
+
+// 최근 글 목록: 제목 / 날짜 / 태그를 한 덩어리로 촘촘하게
+body .recent-notes > ul.recent-ul > li {
+  margin: 0.9rem 0;
+
+  .section > .desc > h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .section > .meta {
+    margin: 0.15rem 0 0.3rem 0;
+    font-size: 0.8rem;
+  }
+
+  .section > ul.tags {
+    margin: 0;
+  }
+}
