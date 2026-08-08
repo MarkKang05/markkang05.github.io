@@ -132,16 +132,20 @@ plugins:
     enabled: true
   - source: "@quartz-community/explorer"
     enabled: true
-    options:
-      # 기본 filterFn 은 tags/ 를 제외한다 — 태그도 트리에 노출
-      filterFn: "(node) => true"
-      # tags 루트는 'Tags'로, 중첩 태그(dev/mysql)는 마지막 조각만 표시
-      mapFn: '(node) => { if (node.slugSegments[0] !== "tags") return; if (node.slugSegments.length === 1) { node.displayName = "Tags" } else { node.displayName = node.slugSegment } }'
-      # 태그 묶음은 항상 폴더 트리 아래에
-      sortFn: '(a, b) => { const at = a.slugSegments[0] === "tags", bt = b.slugSegments[0] === "tags"; if (at !== bt) return at ? 1 : -1; if (a.isFolder === b.isFolder) return a.displayName.localeCompare(b.displayName, undefined, { numeric: true, sensitivity: "base" }); return a.isFolder ? -1 : 1 }'
     layout:
       position: left
       priority: 50
+  # 로컬 플러그인: Explorer 카드 안에 'Tags' 탭을 만들어 태그 목록을 붙인다
+  - source: "./plugins/tag-explorer"
+    enabled: true
+    options:
+      title: Tags
+      filesTabLabel: Files
+      tagsTabLabel: Tags
+      showCounts: true
+    layout:
+      position: left
+      priority: 51
   - source: "@quartz-community/graph"
     enabled: true
     layout:

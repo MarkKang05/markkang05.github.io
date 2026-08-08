@@ -1,0 +1,35 @@
+{
+  "name": "tag-explorer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tag panel that docks into the Explorer card as a second tab",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./components": "./components/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./index.js",
+  "quartz": {
+    "name": "tag-explorer",
+    "displayName": "Tag Explorer",
+    "category": "component",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "dependencies": [],
+    "defaultEnabled": false,
+    "defaultOptions": {
+      "title": "Tags",
+      "filesTabLabel": "Files",
+      "tagsTabLabel": "Tags",
+      "showCounts": true
+    },
+    "components": {
+      "TagExplorer": {
+        "displayName": "Tag Explorer",
+        "defaultPosition": "left",
+        "defaultPriority": 51
+      }
+    }
+  }
+}
