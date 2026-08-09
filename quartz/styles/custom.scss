@@ -28,6 +28,23 @@ body ul.tags {
   margin: 0.5rem 0;
 }
 
+// Explorer 파일 트리: 긴 제목이 여러 줄로 흐를 때 항목 경계가 사라지는 문제.
+// 제목을 자르지 않고, 넘친 줄을 들여쓰기 + 항목 간 여백으로 구분한다.
+// 셀렉터는 파일 링크(a.nav-file-title)만 — 폴더 링크(a.folder-button)는 제외.
+body .explorer-content a.nav-file-title {
+  display: block;
+  margin: 0.35rem 0;
+  line-height: 1.35;
+
+  // hanging indent: 첫 줄은 제자리, 넘친 줄만 0.9em 안으로
+  padding-left: 0.9em;
+  text-indent: -0.9em;
+
+  // 한글은 어절 단위로 끊고, 넘치는 영문/URL 만 강제 분해
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
 // 최근 글 목록: 제목 / 날짜 / 태그를 한 덩어리로 촘촘하게
 body .recent-notes > ul.recent-ul > li {
   margin: 0.9rem 0;
